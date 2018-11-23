@@ -2,4 +2,33 @@ body {
   padding: 50px;
   margin-top: 4vh; }
 
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8vh;
+  background-color: #7496b9;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; }
+
+nav a {
+  text-decoration: none;
+  color: white;
+  margin-right: 2.5vw;
+  font-size: 1.3em; }
+
+.loginAndSignup {
+  height: 70vh;
+  width: 50vw;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 8vh;
+  background-color: #d1d5da; }
+
+input {
+  height: 3vh;
+  border-radius: 4px; }
+
 /*# sourceMappingURL=style.css.map */

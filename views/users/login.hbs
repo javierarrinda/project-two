@@ -1,17 +1,21 @@
-<h1>Login</h1>
+<center>
+<div class="loginAndSignup">
 
-<form action="/login" method="post">
+  <h1>Login</h1>
 
-  <label>Email:</label>
-  <input type="text" name="username" required>
+  <form action="/login" method="post">
 
-  <label>Password:</label>
-  <input type="password" name="password">
+      <label>Email:</label>
+      <input type="text" name="username" required>
 
-  <button>Submit</button>
+      <label>Password:</label>
+      <input type="password" name="password">
 
-</form>
+      <button>Submit</button>
 
+  </form>
+</div>
+</center>
 {{#if errorMessage}}
 <div>{{errorMessage}}</div>
 {{/if}}
