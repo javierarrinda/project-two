@@ -73,5 +73,13 @@ app.use('/', index);
 const userRoutes = require('./routes/user-routes')
 app.use('/', userRoutes);
 
+const tripRoutes =
+require('./routes/trip-routes')
+app.use('/', tripRoutes);
+
+const groupRoutes =
+require('./routes/group-routes')
+app.use('/', groupRoutes);
+
 
 module.exports = app;

@@ -60,6 +60,9 @@ router.post("/login", passport.authenticate("local", {
   passReqToCallback: true
 }));
 
+
+// check with Marcos to see what the code below does. Pretty sure that nothing from there works.
+
 // router.post("/login", (req,res, next) => {
 //   // find a user document in the database with that email
 //   User.findOne({ username: req.body.theUsername })
@@ -109,6 +112,12 @@ router.post("/login", passport.authenticate("local", {
 //     next(err);
 //   });
 // });
+
+
+router.get('/logout', (req, res, next)=>{
+  req.logout();
+  res.redirect('/');
+})
 
 
 module.exports = router;

@@ -7,8 +7,8 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  height: 8vh;
-  background-color: #7496b9;
+  height: 7vh;
+  background-color: black;
   display: flex;
   justify-content: flex-end;
   align-items: center; }
@@ -30,5 +30,16 @@ nav a {
 input {
   height: 3vh;
   border-radius: 4px; }
+
+.homeTop {
+  height: 60vh;
+  display: flex;
+  align-items: center; }
+
+.item {
+  height: 70vh; }
+
+.newTrip {
+  display: column; }
 
 /*# sourceMappingURL=style.css.map */

@@ -8,8 +8,8 @@ nav{
   top: 0;
   left: 0;
   right: 0;
-  height: 8vh;
-  background-color: rgb(116, 150, 185);
+  height: 7vh;
+  background-color: black;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -41,3 +41,18 @@ input{
 // write over the display box for the log in and Password
 
 // gotta include the main page already. information about what you can do with the application and also example trips which you could take
+
+
+.homeTop{
+  height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.item{
+  height: 70vh;
+}
+
+.newTrip{
+  display: column;
+}
