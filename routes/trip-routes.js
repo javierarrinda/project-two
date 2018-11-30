@@ -3,10 +3,21 @@ const router    = express.Router();
 const User      = require('../models/User');
 const Trip      = require('../models/Trip');
 
+
+
 // rendering the creation page
-router.get('/', (req, res, next)=>{
-  res.render('trips/new-trip');
-  console.log('create')
+router.get('/trips', (req, res, next)=>{
+  if (req.user === undefined ) {
+    res.redirect("/login");
+    return;
+  }
+  Trip.find({_id: req.user.trips})
+  .then(usertrips => {
+    res.render('trips/index', {usertrips});
+  })
+  .catch(err => {
+    next(err);
+  })
 });
 
 
@@ -39,28 +50,16 @@ Trip.create({
 router.get('/trips/details/:id', (req, res, next)=>{
   Trip.findById(req.params.id)
   .then((theTripId)=>{
-    res.render('trips/details', theTripId);
+    console.log('log the trip id', theTripId)
+    res.render('trips/details', {theTripId});
   })
   .catch((err)=>{
     next(err)
   })
-  console.log('rendering');
 })
 
 
 
-// this route gets a single trip by its id, then renders a page that shows information about the trip
-//takes a url param for id
-router.get('/trips/details/:id', (req, res, next)=>{
-  // finding a specific trip by its id
-  Trip.findById(theID)
-  .then((theSingleTrip)=>{
-    res.render('trips/details')
-  })
-  .catch((err)=>{
-    next(err);
-  })
-});
 
 // get route that to edit trips, renders and edit hbs page
 // pass this trip in as the variable

@@ -1,0 +1,10 @@
+<h2> Add Members to your Group </h2>
+
+{{#each theUsers}}
+  <div>
+    <h3>{{this.username}}</h3>
+    <form action="/groups/add-member/{{groupInfo._id}}/{{this._id}}" method="post">
+      <button>Add to Group</button>
+    </form>
+  </div>
+{{/each}}

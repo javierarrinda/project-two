@@ -1,0 +1,10 @@
+<h2> Your Groups </h2>
+
+<a href="/groups/create">Create A Group</a>
+
+{{#each groups}}
+  <div>
+    <h4>{{this.name}}</h4>
+    <a href="/groups/{{this._id}}/info"> View Group Details </a>
+  </div>
+{{/each}}

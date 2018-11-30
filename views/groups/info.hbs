@@ -1,8 +1,21 @@
-<body>
-  <h1>Group Info</h1>
 
 
+<div class="container">
+
+  <h2>{{group.name}}</h2>
+
+<h3>Trip Info</h3>
+  <h4>{{group.trip.destination}}</h4>
+  <button><a href="/trips/details/{{group.trip._id}}">Trip Details</a></button>
+
+  <h3>Group Members: </h3>
+  {{#each group.travelers}}
+    <h4>{{this.username}}</h4>
+    <form action="/groups/removeMember/{{this._id}}" method="post">
+      <button>Remove this memeber</button>
+    </form>
+  {{/each}}
+<button><a href="/groups/add-members/{{group._id}}">Add Members</a></button>
 
 
-
-</body>
+</div>
