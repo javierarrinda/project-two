@@ -13,12 +13,22 @@ router.get('/trips', (req, res, next)=>{
   }
   Trip.find({_id: req.user.trips})
   .then(usertrips => {
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", usertrips)
     res.render('trips/index', {usertrips});
   })
   .catch(err => {
     next(err);
   })
 });
+
+
+router.get('/trips/new-trip', (req, res, next) =>{
+  if (req.user === undefined ) {
+    res.redirect("/login");
+    return;
+  }
+  res.render('trips/new-trip')
+})
 
 
 
@@ -37,8 +47,14 @@ Trip.create({
   endDate: theEndDate
 })
   .then((theNewTrip)=>{
-    console.log("----------------------- ", theNewTrip);
-    res.redirect(`/trips/details/${theNewTrip._id}`);
+    User.findByIdAndUpdate(req.user._id, {$push: {trips: theNewTrip._id}})
+    .then(updatedUser => {
+      console.log("----------------------- ", theNewTrip);
+      res.redirect(`/trips/details/${theNewTrip._id}`);
+    })
+    .catch(err => {
+      next(err);
+    })
   })
   .catch((err)=>{
     next(err)
@@ -77,12 +93,22 @@ router.get('trips/edit/:id', (req, res, next)=>{
 router.post('trips/edit', (req, res, next)=>{
   Trip.findByIdAndUpdate(req.params.id)
   .then(()=>{
-    res.redirect('trips/details')
+    res.redirect('trips/trips')
   })
   .catch((err)=>{
     next(err)
   })
 });
+
+router.post('/trips/delete/:id', (req, res , next)=>{
+  Trip.findByIdAndRemove(req.params.id)
+    .then(()=>{
+      res.render('trips/new-trip')
+    })
+    .catch(err=>{
+      next(err);
+    })
+})
 
 
 

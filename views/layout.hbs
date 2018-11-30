@@ -13,16 +13,17 @@
 <body>
 
   <nav class="nav">
-    <h4>Hello: {{currentUser.username}}</h4>
 
     <a href="/">Home</a>
-    <a href="/login">Login</a>
     <a href="/signup">Register</a>
-    <a href="/logout">Logout</a>
-    <a href="/trips">Create Trip</a>
+    <a href="/login">Login</a>
+    <a href="/trips">My Trips</a>
     <a href="/groups/list">Your Crew</a>
+    <a href="/trips/new-trip">Create Trip</a>
+    <a href="/logout">Logout</a>
   </nav>
 
+  <h3>Welcome {{currentUser.username}}!</h3>
 
   {{{body}}}
 

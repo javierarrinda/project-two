@@ -19,7 +19,7 @@ router.post('/groups/create', (req, res, next) => {
     name: req.body.groupNameInput,
   })
   .then(theGroupInfo => {
-    User.findByIdAndUpdate(req.user._id, {push: {groups: theGroupInfo._id}})
+    User.findByIdAndUpdate(req.user._id, {$push: {groups: theGroupInfo._id}})
     .then(updatedUser => {
       res.redirect(`/groups/list`)
     })
@@ -42,7 +42,7 @@ router.get('/groups/list', (req, res, next) => {
     console.log('the group list ----------- ', theUserGroups)
     res.render('groups/groupList', {groups: theUserGroups})
   })
-  .cactc(err => {
+  .catch(err => {
     next(err);
   })
 })
@@ -51,9 +51,9 @@ router.get('/groups/list', (req, res, next) => {
 router.get('/groups/:groupID/info', (req, res, next) => {
   Group.findById(req.params.groupID).populate('travelers').populate('trip')
   .then(theGroupInfo => {
-    res.render('groups/info', {group: theGroupInfo})
+    res.render('groups/info', {groups: theGroupInfo})
   })
-  .cactch(err => {
+  .catch(err => {
     next(err);
   })
 })
@@ -79,7 +79,7 @@ router.get('/groups/add-members/:groupID', (req, res, next)=>{
 })
 
 router.post('/groups/add-members/:groupID/:userID', (req, res, next)=>{
-  Group.findByIdAndUpdate(req.params.groupID, {push: {travelers: req.params.userID}})
+  Group.findByIdAndUpdate(req.params.groupID, {$push: {travelers: req.params.userID}})
   .then(updatedGroup => {
     console.log('group updated with new traveler ----')
     res.redirect(`/groups/${req.params.groupID}/info`);

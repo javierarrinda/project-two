@@ -1,7 +1,10 @@
+<div class="container">
 
 
 <h2>trips index</h2>
-
+<button><a href="/trips/new-trip">Create Trip!</a></button>
 {{#each usertrips}}
-<h3>{{this.destination}}</h3>
+<h3><a href="/trips/details/{{id}}">{{this.destination}}</a></h3>
 {{/each}}
+
+</div>

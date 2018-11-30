@@ -11,6 +11,7 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 const passport     = require('passport');
+const session      = require('express-session');
 
 
 
@@ -42,6 +43,12 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
 
+app.use(session({
+  secret: "out-passport-local-strategy-app",
+  resave: true,
+  saveUninitialized: true
+}));
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -65,6 +72,7 @@ app.use((req, res, next) => {
     // (otherwise your browser will hang)
     next();
 });
+
 
 const index = require('./routes/index');
 app.use('/', index);

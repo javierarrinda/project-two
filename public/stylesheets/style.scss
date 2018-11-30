@@ -15,6 +15,7 @@ nav{
   align-items: center;
 }
 
+
 nav a{
   text-decoration: none;
   color: white;
@@ -24,12 +25,14 @@ nav a{
 
 
 .loginAndSignup{
-  height: 70vh;
-  width: 50vw;
+  height: 15vh;
+  width: 40vw;
   border: 1px solid black;
   border-radius: 10px;
   margin-top: 8vh;
   background-color: rgb(209, 213, 218);
+  justify-content: center;
+  align-items: center;
 }
 
 input{
@@ -54,5 +57,8 @@ input{
 }
 
 .newTrip{
-  display: column;
+  border: 1px solid grey;
+  border-radius: 4px;
+  padding-bottom: 4vh;
+  align-items: center;
 }

@@ -1,17 +1,25 @@
-<body>
+
 
 <div class="container">
 
 
-  <h1>Welcome!</h1>
+  <h1><b>Your Trip!</b></h1>
 
   <h2>Destination: {{theTripId.destination}}</h2>
   <h3>Description: {{theTripId.description}}</h3>
   <h3><b>From:</b> {{theTripId.startDate}} <b>To:</b> {{theTripId.endDate}}</h3>
 
+  <aside class="">
+    {{!-- <h2>Group Members:</h2>
+    <ul>
+      <li>{{}}</li>
+    </ul> --}}
+
+  <button><a href="/groups/create">Add Members</a></button>
+</aside>
 
 
-
+<form action="/trips/delete/{{theTripId.id}}" method="post">
+<button >Delete</button>
+</form>
 </div>
-
-</body>

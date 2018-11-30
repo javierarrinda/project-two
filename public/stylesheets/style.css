@@ -20,12 +20,14 @@ nav a {
   font-size: 1.3em; }
 
 .loginAndSignup {
-  height: 70vh;
-  width: 50vw;
+  height: 15vh;
+  width: 40vw;
   border: 1px solid black;
   border-radius: 10px;
   margin-top: 8vh;
-  background-color: #d1d5da; }
+  background-color: #d1d5da;
+  justify-content: center;
+  align-items: center; }
 
 input {
   height: 3vh;
@@ -40,6 +42,9 @@ input {
   height: 70vh; }
 
 .newTrip {
-  display: column; }
+  border: 1px solid grey;
+  border-radius: 4px;
+  padding-bottom: 4vh;
+  align-items: center; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,8 +1,21 @@
+
+<div class="container">
+
 <h2>Create a Group</h2>
 
 <form action="/groups/create" method="post">
   <label for="nameInputField"> Enter a Name for your Group </label>
   <input type="text" id="nameInputField" name="groupNameInput" />
 
+  <h2>Add member:</h2>
+
+  <a href="/groups/add-members/:groupID">
+  <ul>
+    <li>{{theTripId.theUsername}}</li>
+  </ul>
+</a>
+
   <button> Submit </button>
 </form>
+
+</div>
