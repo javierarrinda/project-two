@@ -119,5 +119,15 @@ router.get('/logout', (req, res, next)=>{
   res.redirect('/');
 })
 
+router.post('/delete/user/:id', (req, res, next)=>{
+  User.findByIdAndRemove(req.params.id)
+  .then(()=>{
+    res.render('/')
+  })
+  .catch(err=>{
+    next(err);
+  })
+})
+
 
 module.exports = router;
