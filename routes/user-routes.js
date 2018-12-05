@@ -4,7 +4,7 @@ const User      = require('../models/User');
 const bcrypt    = require('bcryptjs');
 const passport  = require('passport');
 
-
+// render signup page
 router.get('/signup', (req, res, next)=>{
   res.render('users/signup');
 })
@@ -30,7 +30,7 @@ router.post('/signup', (req, res, next)=>{
       }
 
       console.log("=-=========== ", thePassword);
-
+      //hash set to 10 salt
       const bcryptSalt = 10;
       const salt       = bcrypt.genSaltSync(bcryptSalt);
       console.log("the salt -------------- ", salt);
@@ -49,11 +49,12 @@ router.post('/signup', (req, res, next)=>{
     });
 });
 
-
+// render login page
 router.get ('/login', (req, res, next)=>{
   res.render('users/login');
 });
 
+//passport authentication route
 router.post("/login", passport.authenticate("local", {
   successRedirect: "/",
   failureRedirect: "/login",
@@ -61,73 +62,12 @@ router.post("/login", passport.authenticate("local", {
 }));
 
 
-// check with Marcos to see what the code below does. Pretty sure that nothing from there works.
-
-// router.post("/login", (req,res, next) => {
-//   // find a user document in the database with that email
-//   User.findOne({ username: req.body.theUsername })
-//   .then((userFromDb) => {
-//     if (userFromDb === null) {
-//       // if we didn't find a user
-//       res.locals.errorMessage = "Email incorrect.";
-//       res.render("users/login");
-//
-//       // early return to stop the function since there's an error
-//       // (prevents the rest of the code from running)
-//       return;
-//     }
-//     // if email is correct now we check the password
-//     const isPasswordGood =
-//      bcrypt.compareSync(req.body.thePassword, userFromDb.password);
-//
-//      if (isPasswordGood === false) {
-//        res.locals.errorMessage = "Password incorrect.";
-//        res.render("users/login");
-//
-//        // early return to stop the function since there's an error
-//        // (prevents the rest of the code from running)
-//        return;
-//      }
-//
-//      // CREDENTIALS ARE GOOD! We need to log the users in
-//
-//
-//       // Passport defines the "req.login()"
-//       // for us to specify when to log in a user into the session
-//       req.login(userFromDb, (err) => {
-//         if (err) {
-//           // if it didn't work show the error page
-//           next(err);
-//         }
-//         else {
-//
-//               console.log("user------ ", userFromDb);
-//
-//                 //redirect to the home page on successful log in
-//                 res.redirect("/");
-//         }
-//       }); //req.login()
-//   })// then()
-//   .catch((err) => {
-//     next(err);
-//   });
-// });
-
-
+// logout rout
 router.get('/logout', (req, res, next)=>{
   req.logout();
   res.redirect('/');
 })
 
-router.post('/delete/user/:id', (req, res, next)=>{
-  User.findByIdAndRemove(req.params.id)
-  .then(()=>{
-    res.render('/')
-  })
-  .catch(err=>{
-    next(err);
-  })
-})
 
 
 module.exports = router;
